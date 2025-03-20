@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block title %}Add Product{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Add Product</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Add Product</button>
+    </form>
+
+    <h3>Categories</h3>
+    {% if categories %}
+    <ul>
+        {% for category in categories %}
+            <li>
+                {{ category.name }}
+                {% if category.subcategories.all %}
+                    <ul>
+                        {% for subcategory in category.subcategories.all %}
+                            <li>{{ subcategory.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No categories available.</p>
+    {% endif %}  
+</div>
+{% endblock %}
+
+    
+

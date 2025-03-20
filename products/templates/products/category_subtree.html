@@ -1,0 +1,8 @@
+{% for subcategory in subcategories %}
+    <ul>
+        <li>{{ subcategory.category.name }}</li>
+        {% if subcategory.subcategories %}
+            {% include 'category_subtree.html' with subcategories=subcategory.subcategories %}
+        {% endif %}
+    </ul>
+{% endfor %}

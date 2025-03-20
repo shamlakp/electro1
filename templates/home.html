@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Electronic Product Review App{% endblock %}
+
+{% block content %}
+  <!-- Hero Section with Background Image -->
+  <header class="hero text-center">
+    <div class="hero-overlay"></div>
+
+      <h1>Welcome to E-Review</h1>
+      <p>Your trusted platform for electronic product reviews.</p>
+      <a href="/products/product_list/" class="btn btn-primary">Browse Products</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">About Us</h2>
+      <p class="text-center">E-Review is dedicated to providing reliable and comprehensive reviews of the latest electronic products from leading brands. Our mission is to empower users with the insights they need to make informed purchasing decisions.</p>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="featured-products py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Featured Products</h2>
+      <div class="row">
+        <!-- Product Card 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="/static/images/products/product1.jpg" class="card-img-top" alt="Product 1">
+            <div class="card-body">
+              <h5 class="card-title">Product 1</h5>
+              <p class="card-text">Brief description of Product 1.</p>
+              <a href="/proucts/product_detail/1/" class="btn btn-outline-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+        <!-- Product Card 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="/static/images/products/product2.jpg" class="card-img-top" alt="Product 2">
+            <div class="card-body">
+              <h5 class="card-title">Product 2</h5>
+              <p class="card-text">Brief description of Product 2.</p>
+              <a href="/proucts/product_detail/2/" class="btn btn-outline-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+        <!-- Product Card 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="/static/images/products/product3.jpg" class="card-img-top" alt="Product 3">
+            <div class="card-body">
+              <h5 class="card-title">Product 3</h5>
+              <p class="card-text">Brief description of Product 3.</p>
+              <a href="/proucts/product_detail/3/" class="btn btn-outline-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Testimonials Section -->
+  <section class="testimonials py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">What Our Users Say</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="testimonial">
+            <p>"E-Review helped me choose the perfect laptop. The reviews are honest and very insightful."</p>
+            <h5>-Rahul Gupta</h5>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial">
+            <p>"The best platform for honest reviews on electronics. I always check E-Review before buying!"</p>
+            <h5>-Arjun Singh</h5>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial">
+            <p>"Great website with detailed reviews. It saved me from buying a subpar product."</p>
+            <h5>- Anil Kumar</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
