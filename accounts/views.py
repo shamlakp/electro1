@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import AdminRegistrationForm
-
+from products.models import Product, Review
 
 # Create your views here.
 def admin_login(request):
@@ -57,20 +57,18 @@ def admin_register(request):
 
 @login_required
 def admin_dashboard(request):
-    """Displays the admin dashboard with products belonging to the logged-in admin."""
+    """Displays the admin dashboard with products and their reviews."""
     
-    if not request.user.is_staff:  # Ensure only admin users can access
-        return redirect("home")
-    # Ensure 'products' is always defined
-    products = []
+    # Get all products owned by the logged-in admin
+    products = Product.objects.filter(admin=request.user)
     
-    if hasattr(request.user, 'products'):
-        products = request.user.products.all()
-        reviews = request.user.reviews.all()
+    # Get all reviews related to the admin's products
+    reviews = Review.objects.filter(product__admin=request.user)
+
     context = {
         'admin': request.user,
         'products': products,
-        'reviews': reviews, 
+        'reviews': reviews,  # Add reviews to the context
     }
     return render(request, "accounts/admin_dashboard.html", context)
 

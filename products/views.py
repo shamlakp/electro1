@@ -3,8 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .forms import PublicRegistrationForm, ProductForm, ReviewForm
-from .models import Product,Review
-from .models import Category
+from .models import Product,Review,Category
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import logout
 
@@ -24,7 +23,7 @@ def add_product(request):
             return redirect('admin_dashboard')  # Redirect to admin dashboard
     else:
         form = ProductForm()
-    categories = Category.objects.all()
+    categories =Category.objects.all()
     return render(request, 'products/add_product.html', {
         'form': form  
     })
@@ -103,7 +102,7 @@ def product_detail(request, product_id):
 
 def get_category_hierarchy(category):
     hierarchy = {'category': category, 'subcategories': []}
-    subcategories = Category.objects.filter(parent=category)
+    subcategories = category.objects.filter(parent=category)
     for subcategory in subcategories:
         hierarchy['subcategories'].append(get_category_hierarchy(subcategory))
     return hierarchy
@@ -140,7 +139,6 @@ def edit_product(request, product_id):
         form = ProductForm(instance=product)
     
     return render(request, 'products/edit_product.html', {'form': form})
-
 @login_required
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -154,4 +152,6 @@ def delete_product(request, product_id):
         return redirect('admin_dashboard')  # Redirect after deletion
 
     return render(request, 'product/delete_product.html', {'product': product})
+
+
 
